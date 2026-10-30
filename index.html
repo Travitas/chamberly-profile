@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chamberly - Adv. Varun Jain</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- Google Fonts for Chamberly Logo Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    .font-logo {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    /* ===== Light theme overrides (dark is default) ===== */
+    html, body, div, header, section, button, span, a { transition: background-color .2s ease, border-color .2s ease, color .2s ease; }
+
+    /* Backgrounds */
+    html.light .bg-\[\#050608\] { background-color: #ecedf0; }
+    html.light .bg-\[\#0a0c10\] { background-color: #f7f7f9; }
+    html.light .bg-\[\#0a0c10\]\/95 { background-color: rgba(247,247,249,.95); }
+    html.light .bg-\[\#07090d\]\/95 { background-color: rgba(247,247,249,.95); }
+    html.light .bg-\[\#11141a\] { background-color: #ffffff; }
+    html.light .bg-\[\#181c25\] { background-color: #eceef2; }
+    html.light .bg-\[\#171b23\] { background-color: #f1f2f5; }
+    html.light .bg-\[\#0d1015\] { background-color: #f3f4f7; }
+    html.light .bg-\[\#1e232d\] { background-color: #e6e8ee; }
+
+    /* Borders */
+    html.light .border-\[\#171b23\],
+    html.light .border-\[\#1c212b\] { border-color: #e2e4ea; }
+    html.light .border-\[\#2b3342\],
+    html.light .border-\[\#222836\],
+    html.light .border-\[\#262d3b\],
+    html.light .border-\[\#343d50\],
+    html.light .border-\[\#30384a\] { border-color: #d0d4dd; }
+    html.light .border-\[\#4a5265\] { border-color: #bcc1cd; }
+    html.light .border-\[\#11141a\] { border-color: #ffffff; }
+    html.light .divide-\[\#222836\] > :not([hidden]) ~ :not([hidden]) { border-color: #d0d4dd; }
+
+    /* Text */
+    html.light .text-white { color: #121317; }
+    html.light .text-neutral-300 { color: #40444f; }
+    html.light .text-\[\#cfd4de\] { color: #40444f; }
+    html.light .text-\[\#f5f6f8\] { color: #121317; }
+    html.light .text-\[\#d8dce4\],
+    html.light .text-\[\#e3e6ec\] { color: #24262e; }
+    html.light .text-\[\#a3a9b6\],
+    html.light .text-\[\#868d9c\],
+    html.light .text-\[\#9ca3b1\],
+    html.light .text-\[\#a9afbb\] { color: #5a5f6c; }
+    html.light .text-\[\#7d8494\],
+    html.light .text-\[\#6b7282\] { color: #6f7482; }
+    html.light .text-\[\#e2b04a\] { color: #9a7209; }
+    html.light .text-\[\#d4af37\] { color: #8a6d12; }
+    html.light .hover\:text-white:hover { color: #121317; }
+  </style>
+  <script>
+    try {
+      if (localStorage.getItem('chamberly-theme') === 'light') {
+        document.documentElement.classList.add('light');
+      }
+    } catch (e) {}
+  </script>
+</head>
+<body class="bg-[#050608] text-white font-sans antialiased min-h-screen">
+
+  <!-- Main Container: Mobile par max-w-md, Desktop par max-w-6xl -->
+  <div class="w-full max-w-md lg:max-w-6xl mx-auto bg-[#0a0c10] min-h-screen pb-28 lg:pb-16 relative border-x border-[#171b23]">
+    
+    <!-- Top Header Navigation -->
+    <header class="px-4 lg:px-8 py-3 lg:py-3.5 flex items-center justify-between border-b border-[#171b23] sticky top-0 bg-[#0a0c10]/95 backdrop-blur-md z-30">
+      <div class="flex items-center gap-3 lg:gap-6">
+        <i class="fa-solid fa-bars text-lg text-neutral-300 cursor-pointer lg:hidden"></i>
+        <!-- Chamberly Brand Logo -->
+        <span class="font-logo font-bold text-2xl lg:text-3xl tracking-normal text-white">Chamberly.</span>
+        
+        <!-- Desktop Nav Links -->
+        <nav class="hidden lg:flex items-center gap-6 ml-6 text-[13px] text-[#9ca3b1]">
+          <a href="#" class="text-white hover:text-[#e2b04a] transition">Find Lawyers</a>
+          <a href="#" class="hover:text-white transition">Practice Areas</a>
+          <a href="#" class="hover:text-white transition">Legal Insights</a>
+          <a href="#" class="hover:text-white transition">For Advocates</a>
+        </nav>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button id="theme-toggle" onclick="toggleTheme()" aria-label="Switch between light and dark theme" class="w-8 h-8 rounded-full bg-[#181c25] border border-[#2b3342] flex items-center justify-center text-[#cfd4de] text-sm cursor-pointer">
+          <i id="theme-icon" class="fa-solid fa-sun"></i>
+        </button>
+        <button class="w-8 h-8 rounded-full bg-[#181c25] border border-[#2b3342] flex items-center justify-center text-neutral-300 text-sm">
+          <i class="fa-regular fa-user"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="px-4 lg:px-8 py-3 text-[12px] text-[#7d8494] tracking-wider uppercase font-medium flex items-center gap-1.5 overflow-x-auto whitespace-nowrap">
+      <span>HOME</span>
+      <span>›</span>
+      <span>LAWYERS</span>
+      <span>›</span>
+      <span class="text-[#e2b04a]">ADV. VARUN JAIN</span>
+    </div>
+
+    <!-- Main Profile Card: Desktop me Astrotalk Horizontal Hero Card ban jaayega -->
+    <div class="px-3 lg:px-8">
+      <div class="bg-[#11141a] rounded-3xl p-5 lg:p-7 border border-[#222836] relative shadow-2xl">
+        
+        <!-- Options Menu Dots -->
+        <button id="menu-btn" onclick="toggleMenu(event)" aria-haspopup="true" aria-expanded="false" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-[#868d9c] hover:text-white cursor-pointer" aria-label="Menu options">
+          <i class="fa-solid fa-ellipsis-vertical text-base"></i>
+        </button>
+
+        <!-- Dropdown Menu -->
+        <div id="profile-menu" class="hidden absolute top-12 right-4 w-56 bg-[#171b23] border border-[#262d3b] rounded-2xl shadow-2xl py-1.5 z-20" role="menu">
+          <button onclick="shareProfile()" role="menuitem" class="w-full flex items-center gap-3 px-4 py-2.5 text-[13px] text-[#e3e6ec] hover:bg-[#e2b04a]/10 cursor-pointer text-left">
+            <i class="fa-solid fa-share-nodes text-[#e2b04a] text-sm w-4 shrink-0"></i>
+            <span>Share profile</span>
+          </button>
+          <button onclick="downloadVCard()" role="menuitem" class="w-full flex items-center gap-3 px-4 py-2.5 text-[13px] text-[#e3e6ec] hover:bg-[#e2b04a]/10 cursor-pointer text-left">
+            <i class="fa-regular fa-address-card text-[#e2b04a] text-sm w-4 shrink-0"></i>
+            <span>Download virtual card</span>
+          </button>
+        </div>
+
+        <!-- Desktop Horizontal Container -->
+        <div class="lg:flex lg:items-center lg:justify-between lg:gap-8 lg:pr-10">
+          
+          <!-- Left: Avatar + Details -->
+          <div class="lg:flex lg:items-center lg:gap-6">
+            <!-- Adv. Varun Jain Profile Image -->
+            <div class="flex justify-center mt-1 lg:mt-0 shrink-0">
+              <div class="relative">
+                <div class="w-24 h-24 lg:w-28 lg:h-28 rounded-full p-[3px] border-2 border-[#d4af37] flex items-center justify-center overflow-hidden bg-neutral-900">
+                  <img 
+                    src="https://jainlawcompany.com/wp-content/uploads/2026/02/Adv.-Varun-Jain.png" 
+                    alt="Adv. Varun Jain" 
+                    class="w-full h-full object-cover object-top rounded-full"
+                    onerror="this.src='https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=400&q=80'"
+                  />
+                </div>
+                <!-- Online status indicator dot -->
+                <span class="absolute bottom-1 right-2 w-4 h-4 bg-emerald-500 rounded-full border-2 border-[#11141a]"></span>
+              </div>
+            </div>
+
+            <!-- Name, Badges & Meta -->
+            <div class="text-center lg:text-left mt-3 lg:mt-0">
+              <div class="flex items-center justify-center lg:justify-start gap-2">
+                <h1 class="text-[22px] lg:text-[26px] font-bold text-[#f5f6f8] tracking-wide">Adv. Varun Jain</h1>
+                <i class="fa-solid fa-circle-check text-emerald-500 text-base"></i>
+                <span class="bg-[#fef3c7]/10 text-[#e2b04a] border border-[#e2b04a]/30 text-[11px] font-semibold px-2 py-0.5 rounded-full uppercase tracking-wider">
+                  High Court
+                </span>
+              </div>
+              <p class="text-[13px] text-[#a3a9b6] mt-1 font-normal">Founder, Jain Law & Company</p>
+              
+              <!-- Meta: Expertise & Speaks (Desktop layout) -->
+              <div class="mt-4 pt-4 border-t border-[#1c212b] space-y-2.5 text-[13px] text-left lg:pt-0 lg:border-t-0 lg:space-y-1.5">
+                <div class="flex items-start gap-2.5">
+                  <span class="text-[#e2b04a] text-sm mt-0.5">☆</span>
+                  <div class="text-[#7d8494] uppercase text-[11px] tracking-wider w-20 shrink-0 font-medium">EXPERTISE</div>
+                  <div class="text-[#d8dce4] font-normal leading-relaxed">RERA · Commercial Disputes · NCLT & IBC · Litigation</div>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <span class="text-[#e2b04a] text-sm">文A</span>
+                  <div class="text-[#7d8494] uppercase text-[11px] tracking-wider w-20 shrink-0 font-medium">SPEAKS</div>
+                  <div class="text-[#d8dce4] font-normal">English, Hindi</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Desktop Instant Connect CTA (Astrotalk Web Style) -->
+          <div class="hidden lg:flex flex-col items-end gap-3 shrink-0">
+            <div class="text-right">
+              <span class="text-xs text-emerald-400 font-semibold flex items-center gap-1.5 justify-end">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Available for Instant Connect
+              </span>
+              <p class="text-[11px] text-[#7d8494] mt-0.5">Bar Verified · Delhi High Court</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <a href="https://wa.me/919812345678" target="_blank" class="bg-[#181c25] hover:bg-[#222836] border border-[#30384a] text-white px-5 py-2.5 rounded-xl flex items-center gap-2 text-xs font-semibold transition active:scale-95">
+                <i class="fa-regular fa-comment-dots text-[#e2b04a]"></i>
+                <span>Chat Now</span>
+              </a>
+              <a href="tel:+919812345678" class="bg-[#e2b04a] hover:bg-[#c9972f] text-black px-5 py-2.5 rounded-xl flex items-center gap-2 text-xs font-bold transition active:scale-95 shadow-md">
+                <i class="fa-solid fa-phone"></i>
+                <span>Call Now</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 3 Stats Counter Grid -->
+        <div class="grid grid-cols-3 divide-x divide-[#222836] border-t border-[#1c212b] mt-5 pt-4 text-center lg:max-w-2xl">
+          <div class="px-1 flex flex-col items-center">
+            <i class="fa-solid fa-briefcase text-sm text-[#d4af37] mb-1.5 opacity-90"></i>
+            <span class="text-[17px] font-bold text-white tracking-tight">14+ yrs</span>
+            <span class="text-[12px] text-[#7d8494] mt-0.5">Experience</span>
+          </div>
+
+          <div class="px-1 flex flex-col items-center">
+            <i class="fa-regular fa-folder-open text-sm text-[#d4af37] mb-1.5 opacity-90"></i>
+            <span class="text-[17px] font-bold text-white tracking-tight">1,500+</span>
+            <span class="text-[12px] text-[#7d8494] mt-0.5">Matters Handled</span>
+          </div>
+
+          <div class="px-1 flex flex-col items-center">
+            <i class="fa-solid fa-scale-balanced text-sm text-[#d4af37] mb-1.5 opacity-90"></i>
+            <span class="text-[17px] font-bold text-white tracking-tight">30+</span>
+            <span class="text-[12px] text-[#7d8494] mt-0.5">PAN India Network</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Consultation CTA (Desktop me hide ho jayega) -->
+    <div class="px-3 mt-4 lg:hidden">
+      <div class="grid grid-cols-2 gap-2.5">
+        <a
+          href="mailto:varun.jain@jainlawco.in?subject=Consultation%20Enquiry&body=Hello%20Adv.%20Varun%20Jain%2C%0A%0AI%20would%20like%20to%20discuss%20a%20legal%20matter."
+          class="bg-[#11141a] border border-[#30384a] hover:border-[#e2b04a]/50 text-[#e3e6ec] rounded-2xl py-3 flex items-center justify-center gap-2 text-[13px] font-semibold active:scale-95 transition cursor-pointer"
+        >
+          <i class="fa-regular fa-paper-plane text-sm text-[#e2b04a]"></i>
+          <span>Send Enquiry</span>
+        </a>
+        <a
+          href="https://wa.me/919812345678?text=Hello%20Adv.%20Varun%20Jain%2C%20I%20would%20like%20to%20book%20a%20consultation."
+          target="_blank" rel="noopener"
+          class="bg-[#e2b04a] hover:bg-[#c9972f] text-black rounded-2xl py-3 flex items-center justify-center gap-2 text-[13px] font-bold active:scale-95 transition cursor-pointer"
+        >
+          <i class="fa-regular fa-calendar-check text-sm"></i>
+          <span>Book Consultation</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- DESKTOP 2-COLUMN GRID WRAPPER (Left Content, Right Sticky) -->
+    <!-- ======================================================== -->
+    <div class="lg:px-8 lg:mt-8 lg:grid lg:grid-cols-12 lg:gap-8 items-start">
+      
+      <!-- LEFT COLUMN (Span 8 Cols = 68% Width) -->
+      <div class="flex flex-col lg:col-span-8">
+
+        <!-- About Section with Functional Read More / Read Less Toggle -->
+        <section class="order-1 px-5 lg:px-0 mt-7 lg:mt-0">
+          <h2 class="text-[17px] font-bold text-white tracking-wide">About Adv. Varun Jain</h2>
+          
+          <p class="text-[14px] text-[#9ca3b1] leading-relaxed mt-2.5">
+            Adv. Varun Jain is the Founder of Jain Law & Company, delivering strategic legal solutions across Real Estate & RERA, Corporate & Commercial Disputes, NCLT / IBC insolvency, and High Court Litigation.
+          </p>
+
+          <div id="full-bio" class="hidden text-[14px] text-[#9ca3b1] leading-relaxed mt-2 space-y-2">
+            <p>
+              With over 14+ years of courtroom experience in Delhi courts and regulatory tribunals, he approaches legal matters by understanding not only the legal issues but also the commercial and procedural considerations surrounding them.
+            </p>
+            <p>
+              His practice specializes in protecting client interests through proactive pre-litigation advisory, effective dispute mitigation, contractual safeguarding, and strategic representation before various appellate forums and High Courts.
+            </p>
+          </div>
+
+          <button 
+            id="toggle-bio-btn" 
+            onclick="toggleBio()"
+            class="text-[13px] text-[#e2b04a] font-semibold mt-2 inline-flex items-center gap-1.5 hover:underline focus:outline-none cursor-pointer"
+          >
+            <span id="btn-text">Read more</span>
+            <i id="btn-icon" class="fa-solid fa-chevron-down text-[10px] transition-transform duration-200"></i>
+          </button>
+        </section>
+
+        <!-- Areas of Expertise Section -->
+        <section class="order-3 lg:order-2 px-5 lg:px-0 mt-7 border-t border-[#171b23] pt-5">
+          <h2 class="text-[17px] font-bold text-white tracking-wide">Areas of expertise</h2>
+          <div class="flex flex-wrap gap-2.5 text-[13px] text-[#e3e6ec] mt-3.5">
+            <span class="bg-[#171b23] border border-[#262d3b] px-3 py-2 rounded-xl shadow-sm">Real Estate & RERA</span>
+            <span class="bg-[#171b23] border border-[#262d3b] px-3 py-2 rounded-xl shadow-sm">Corporate & Commercial</span>
+            <span class="bg-[#171b23] border border-[#262d3b] px-3 py-2 rounded-xl shadow-sm">NCLT & IBC Insolvency</span>
+            <span class="bg-[#171b23] border border-[#262d3b] px-3 py-2 rounded-xl shadow-sm">Strategic Litigation</span>
+            <span class="bg-[#171b23] border border-[#262d3b] px-3 py-2 rounded-xl shadow-sm">Corporate Advisory</span>
+            <span class="bg-[#171b23] border border-[#262d3b] px-3 py-2 rounded-xl shadow-sm">Criminal Law & Bail</span>
+          </div>
+        </section>
+
+        <!-- Key Qualifications Section -->
+        <section class="order-2 lg:order-3 px-5 lg:px-0 mt-7 border-t border-[#171b23] pt-5">
+          <h2 class="text-[17px] font-bold text-white tracking-wide">Key Qualifications</h2>
+          <div class="mt-3.5 space-y-4">
+            <div class="flex items-start gap-3.5">
+              <div class="w-9 h-9 rounded-xl bg-[#171b23] border border-[#262d3b] flex items-center justify-center shrink-0">
+                <i class="fa-solid fa-graduation-cap text-sm text-[#e2b04a]"></i>
+              </div>
+              <div>
+                <div class="text-[14px] font-semibold text-[#f5f6f8]">B.A. LL.B. (Hons.)</div>
+                <div class="text-[13px] text-[#9ca3b1] mt-0.5">National Law University, 2008</div>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3.5">
+              <div class="w-9 h-9 rounded-xl bg-[#171b23] border border-[#262d3b] flex items-center justify-center shrink-0">
+                <i class="fa-solid fa-shield-halved text-sm text-[#e2b04a]"></i>
+              </div>
+              <div>
+                <div class="text-[14px] font-semibold text-[#f5f6f8]">Enrolled with Bar Council of Delhi</div>
+                <div class="text-[13px] text-[#9ca3b1] mt-0.5">Enrolment No. D/XXXXX/2012</div>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3.5">
+              <div class="w-9 h-9 rounded-xl bg-[#171b23] border border-[#262d3b] flex items-center justify-center shrink-0">
+                <i class="fa-solid fa-users text-sm text-[#e2b04a]"></i>
+              </div>
+              <div>
+                <div class="text-[14px] font-semibold text-[#f5f6f8]">Member, Delhi Bar Association</div>
+                <div class="text-[13px] text-[#9ca3b1] mt-0.5">Since 2012</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Practice Qualifications & Chamber Details -->
+        <section class="order-4 lg:hidden px-5 mt-7 border-t border-[#171b23] pt-5">
+          <h2 class="text-[17px] font-bold text-white tracking-wide">Chamber & Credentials</h2>
+          <div class="mt-3.5 bg-[#11141a] p-4 rounded-2xl border border-[#1c212b] space-y-3 text-[13px] text-[#a9afbb]">
+            <div class="flex items-start gap-2.5">
+              <i class="fa-solid fa-location-dot text-[#e2b04a] mt-1 text-sm w-4 shrink-0"></i>
+              <div>
+                <span class="text-white font-medium block">Chamber Office:</span>
+                625A, Western Wing, Tis Hazari Courts, Delhi - 110054
+              </div>
+            </div>
+            <div class="flex items-center gap-2.5">
+              <i class="fa-solid fa-id-card text-[#e2b04a] text-sm w-4 shrink-0"></i>
+              <div>
+                <span class="text-white font-medium">Bar Council Affiliation:</span> Bar Council of Delhi
+              </div>
+            </div>
+            <div class="flex items-center gap-2.5">
+              <i class="fa-solid fa-city text-[#e2b04a] text-sm w-4 shrink-0"></i>
+              <div>
+                <span class="text-white font-medium">Presence:</span> Pan-India Network across 15+ Cities
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Courts & Jurisdiction Badges -->
+        <section class="order-5 lg:order-4 px-5 lg:px-0 mt-7 border-t border-[#171b23] pt-5">
+          <h2 class="text-[17px] font-bold text-white tracking-wide">Court Appearances & Forums</h2>
+          <div class="mt-3.5 flex flex-wrap gap-2 text-[13px]">
+            <span class="bg-[#171b23] border border-[#262d3b] text-[#d8dce4] px-3 py-1.5 rounded-lg flex items-center gap-2">
+              <i class="fa-solid fa-landmark text-xs text-[#e2b04a]"></i> Supreme Court of India
+            </span>
+            <span class="bg-[#171b23] border border-[#262d3b] text-[#d8dce4] px-3 py-1.5 rounded-lg flex items-center gap-2">
+              <i class="fa-solid fa-landmark text-xs text-[#e2b04a]"></i> Delhi High Court
+            </span>
+            <span class="bg-[#171b23] border border-[#262d3b] text-[#d8dce4] px-3 py-1.5 rounded-lg flex items-center gap-2">
+              <i class="fa-solid fa-gavel text-xs text-[#e2b04a]"></i> NCLT & NCLAT
+            </span>
+            <span class="bg-[#171b23] border border-[#262d3b] text-[#d8dce4] px-3 py-1.5 rounded-lg flex items-center gap-2">
+              <i class="fa-solid fa-building-shield text-xs text-[#e2b04a]"></i> RERA & REAT
+            </span>
+            <span class="bg-[#171b23] border border-[#262d3b] text-[#d8dce4] px-3 py-1.5 rounded-lg flex items-center gap-2">
+              <i class="fa-solid fa-location-arrow text-xs text-[#e2b04a]"></i> Tis Hazari & District Courts
+            </span>
+          </div>
+        </section>
+
+        <!-- Client Reviews Section (Astrotalk Style List) -->
+        <section class="order-6 lg:order-5 px-5 lg:px-0 mt-7 border-t border-[#171b23] pt-5">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-[17px] font-bold text-white tracking-wide">Client Reviews</h2>
+            <span class="text-xs text-[#a3a9b6] bg-[#181c25] border border-[#262d3b] px-2.5 py-1 rounded-full">
+              <span class="text-[#e2b04a] font-bold">5.0</span> (1,240+ reviews)
+            </span>
+          </div>
+
+          <!-- Functional Review Filter Tabs -->
+          <div class="flex items-center gap-2 mb-4 text-[12px]">
+            <button 
+              id="tab-helpful" 
+              onclick="filterReviews('helpful')"
+              class="bg-[#e2b04a]/20 text-[#e2b04a] border border-[#e2b04a]/40 px-3.5 py-1 rounded-full font-medium transition cursor-pointer"
+            >
+              Most helpful
+            </button>
+            <button 
+              id="tab-recent" 
+              onclick="filterReviews('recent')"
+              class="bg-[#11141a] text-[#7d8494] border border-[#222836] px-3.5 py-1 rounded-full font-medium transition cursor-pointer"
+            >
+              Recent
+            </button>
+          </div>
+
+          <!-- Review Item 1 -->
+          <div class="py-3 border-b border-[#171b23]">
+            <div class="flex items-center gap-2.5 mb-1.5">
+              <div class="w-8 h-8 rounded-full bg-[#1e232d] text-[#e2b04a] font-bold text-xs flex items-center justify-center border border-[#343d50]">
+                S
+              </div>
+              <div>
+                <div class="text-[13px] font-semibold text-[#f5f6f8]">Siddharth Oberoi</div>
+                <div class="flex text-[11px] text-[#e2b04a]">
+                  ★★★★★ <span class="text-[#6b7282] ml-2 font-normal text-[11px]">2 days ago</span>
+                </div>
+              </div>
+            </div>
+            <p class="text-[13px] text-[#d8dce4] leading-relaxed pl-10">
+              Delayed flat handover case me builder ne refund dene se mana kar diya tha. Varun Sir ne RERA process aur calculation bilkul clear samjhaya aur legal notice draft karwaya. Highly recommended legal advisor.
+            </p>
+
+            <div class="mt-2.5 ml-10 bg-[#0d1015] p-2.5 rounded-xl border-l-2 border-[#e2b04a] border-y border-r border-[#1c212b]">
+              <div class="flex items-center gap-1.5 text-[12px] font-semibold text-[#e2b04a] mb-1">
+                <span>Adv. Varun Jain</span>
+                <span class="text-[10px] bg-[#e2b04a]/20 px-1.5 py-0.2 rounded text-[#e2b04a]">Lawyer</span>
+              </div>
+              <p class="text-[12px] text-[#9ca3b1]">
+                Thank you Siddharth. Ensuring legal clarity on timeline aur developer compliance hamesha hamari priority rehti hai.
+              </p>
+            </div>
+          </div>
+
+          <!-- Review Item 2 -->
+          <div class="py-3 border-b border-[#171b23]">
+            <div class="flex items-center gap-2.5 mb-1.5">
+              <div class="w-8 h-8 rounded-full bg-[#1e232d] text-[#e2b04a] font-bold text-xs flex items-center justify-center border border-[#343d50]">
+                M
+              </div>
+              <div>
+                <div class="text-[13px] font-semibold text-[#f5f6f8]">Mohit Singhania</div>
+                <div class="flex text-[11px] text-[#e2b04a]">
+                  ★★★★★ <span class="text-[#6b7282] ml-2 font-normal text-[11px]">1 week ago</span>
+                </div>
+              </div>
+            </div>
+            <p class="text-[13px] text-[#d8dce4] leading-relaxed pl-10">
+              NCLT recovery petition ke liye consult kiya tha. Call par practical ground realities aur legal remedy dono crystal clear batayi bina kisi unnecessary confusion ke.
+            </p>
+
+            <div class="mt-2.5 ml-10 bg-[#0d1015] p-2.5 rounded-xl border-l-2 border-[#e2b04a] border-y border-r border-[#1c212b]">
+              <div class="flex items-center gap-1.5 text-[12px] font-semibold text-[#e2b04a] mb-1">
+                <span>Adv. Varun Jain</span>
+                <span class="text-[10px] bg-[#e2b04a]/20 px-1.5 py-0.2 rounded text-[#e2b04a]">Lawyer</span>
+              </div>
+              <p class="text-[12px] text-[#9ca3b1]">
+                Appreciate your feedback Mohit. Glad we could assist with commercial litigation insights.
+              </p>
+            </div>
+          </div>
+
+          <!-- View All Reviews Button -->
+          <div class="pt-4 text-center">
+            <button class="text-[13px] text-[#e2b04a] font-semibold hover:underline flex items-center justify-center gap-1.5 mx-auto cursor-pointer">
+              <span>View all 1,240+ reviews</span>
+              <i class="fa-solid fa-chevron-down text-[11px]"></i>
+            </button>
+          </div>
+        </section>
+
+        <!-- Desktop Social Network Section -->
+        <section class="order-7 hidden lg:block mt-7 border-t border-[#171b23] pt-5">
+          <h2 class="text-[17px] font-bold text-white tracking-wide">Social Network</h2>
+          <div class="mt-3.5 bg-[#11141a] p-5 rounded-3xl border border-[#1c212b]">
+            <p class="text-[12px] text-[#9ca3b1] mb-4">Reach Adv. Varun Jain on his official channels</p>
+            <div class="grid grid-cols-2 gap-3">
+            <a href="https://wa.me/919812345678" target="_blank" rel="noopener" aria-label="WhatsApp" class="group flex items-center gap-3 p-3 rounded-2xl bg-[#171b23] border border-[#262d3b] hover:border-[#e2b04a]/50 active:scale-[0.98] transition">
+              <span class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.35)">
+                <i class="fa-brands fa-whatsapp text-[17px]" style="color:#25D366"></i>
+              </span>
+              <span class="min-w-0">
+                <span class="block text-[14px] font-semibold text-white leading-tight">WhatsApp</span>
+                <span class="block text-[12px] text-[#9ca3b1] mt-0.5">Quick Message</span>
+              </span>
+            </a>
+            <a href="https://www.linkedin.com/in/varunjain" target="_blank" rel="noopener" aria-label="LinkedIn" class="group flex items-center gap-3 p-3 rounded-2xl bg-[#171b23] border border-[#262d3b] hover:border-[#e2b04a]/50 active:scale-[0.98] transition">
+              <span class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background:rgba(55,143,233,.12);border:1px solid rgba(55,143,233,.35)">
+                <i class="fa-brands fa-linkedin-in text-[17px]" style="color:#378FE9"></i>
+              </span>
+              <span class="min-w-0">
+                <span class="block text-[14px] font-semibold text-white leading-tight">LinkedIn</span>
+                <span class="block text-[12px] text-[#9ca3b1] mt-0.5">Connect</span>
+              </span>
+            </a>
+            <a href="#" target="_blank" rel="noopener" aria-label="Instagram" class="group flex items-center gap-3 p-3 rounded-2xl bg-[#171b23] border border-[#262d3b] hover:border-[#e2b04a]/50 active:scale-[0.98] transition">
+              <span class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background:rgba(220,39,67,.12);border:1px solid rgba(220,39,67,.35)">
+                <i class="fa-brands fa-instagram text-[17px]" style="background:linear-gradient(45deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent"></i>
+              </span>
+              <span class="min-w-0">
+                <span class="block text-[14px] font-semibold text-white leading-tight">Instagram</span>
+                <span class="block text-[12px] text-[#9ca3b1] mt-0.5">Follow</span>
+              </span>
+            </a>
+            <a href="#" target="_blank" rel="noopener" aria-label="Facebook" class="group flex items-center gap-3 p-3 rounded-2xl bg-[#171b23] border border-[#262d3b] hover:border-[#e2b04a]/50 active:scale-[0.98] transition">
+              <span class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background:rgba(24,119,242,.12);border:1px solid rgba(24,119,242,.35)">
+                <i class="fa-brands fa-facebook-f text-[17px]" style="color:#1877F2"></i>
+              </span>
+              <span class="min-w-0">
+                <span class="block text-[14px] font-semibold text-white leading-tight">Facebook</span>
+                <span class="block text-[12px] text-[#9ca3b1] mt-0.5">Follow</span>
+              </span>
+            </a>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- RIGHT COLUMN (Span 4 Cols = 32% Width) - Desktop Sticky Card (Astrotalk Ref Box) -->
+      <aside class="hidden lg:block lg:col-span-4 sticky top-20 space-y-5">
+        
+        <!-- Desktop Sticky Consultation Box -->
+        <div class="bg-[#11141a] rounded-3xl p-5 border border-[#222836] shadow-xl">
+          <div class="flex items-center justify-between pb-3 border-b border-[#1c212b]">
+            <span class="text-xs uppercase tracking-wider text-[#7d8494] font-semibold">Consultation</span>
+            <span class="text-xs text-emerald-400 font-medium">⚡ Connects in &lt;60s</span>
+          </div>
+
+          <div class="mt-4 space-y-3">
+            <a href="https://wa.me/919812345678" target="_blank" class="w-full bg-[#181c25] hover:bg-[#202533] border border-[#30384a] text-white py-3 rounded-2xl flex items-center justify-center gap-2.5 text-[13px] font-semibold transition active:scale-98">
+              <i class="fa-regular fa-comment-dots text-[#e2b04a]"></i>
+              <span>Start Legal Chat</span>
+            </a>
+
+            <a href="tel:+919812345678" class="w-full bg-[#e2b04a] hover:bg-[#c9972f] text-black py-3 rounded-2xl flex items-center justify-center gap-2.5 text-[13px] font-bold transition active:scale-98 shadow-md">
+              <i class="fa-solid fa-phone"></i>
+              <span>Call Advocate Now</span>
+            </a>
+          </div>
+
+          <!-- Trust Badges -->
+          <div class="mt-4 pt-4 border-t border-[#1c212b] space-y-2 text-[12px] text-[#9ca3b1]">
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-circle-check text-emerald-500 text-xs"></i>
+              <span>Verified Bar Council Enrollment</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-lock text-[#e2b04a] text-xs"></i>
+              <span>100% Confidential & Secure</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-location-dot text-[#e2b04a] text-xs"></i>
+              <span>Tis Hazari Courts Chamber, Delhi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Desktop Quick Connect & Social Hub -->
+        <div class="bg-[#11141a] rounded-3xl p-5 border border-[#222836] shadow-xl">
+          <h3 class="text-[15px] font-bold text-white tracking-wide mb-3">Connect & Links</h3>
+          <div class="space-y-2.5 text-[13px]">
+            <a href="https://www.jainlawco.in" target="_blank" class="flex items-center justify-between p-2.5 rounded-xl bg-[#171b23] hover:bg-[#1e232d] border border-[#262d3b] text-[#d8dce4] transition">
+              <span class="flex items-center gap-2.5"><i class="fa-solid fa-globe text-[#e2b04a]"></i> Official Website</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-xs text-[#7d8494]"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/varunjain" target="_blank" class="flex items-center justify-between p-2.5 rounded-xl bg-[#171b23] hover:bg-[#1e232d] border border-[#262d3b] text-[#d8dce4] transition">
+              <span class="flex items-center gap-2.5"><i class="fa-brands fa-linkedin-in text-[#378FE9]"></i> LinkedIn Profile</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-xs text-[#7d8494]"></i>
+            </a>
+            <a href="mailto:varun.jain@jainlawco.in" class="flex items-center justify-between p-2.5 rounded-xl bg-[#171b23] hover:bg-[#1e232d] border border-[#262d3b] text-[#d8dce4] transition">
+              <span class="flex items-center gap-2.5"><i class="fa-regular fa-envelope text-[#e2b04a]"></i> Email Chamber</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-xs text-[#7d8494]"></i>
+            </a>
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+
+    <!-- Mobile Contact & Social Links Section (Sirf Mobile Par Dikhne Ke Liye) -->
+    <div class="lg:hidden">
+      <section class="px-5 mt-7 border-t border-[#171b23] pt-5">
+        <h2 class="text-[17px] font-bold text-white tracking-wide">Contact & Social Links</h2>
+        <div class="mt-3.5 bg-[#11141a] p-4 rounded-2xl border border-[#1c212b] space-y-4 text-[13px]">
+          <div class="flex items-center justify-between gap-3">
+            <div class="flex items-center gap-3 min-w-0">
+              <i class="fa-solid fa-phone text-[#e2b04a] text-sm w-4 shrink-0"></i>
+              <span class="text-[#d8dce4]">+91 98123 45678</span>
+            </div>
+            <a href="tel:+919812345678" class="shrink-0 border border-[#30384a] hover:border-[#e2b04a]/50 text-[#e3e6ec] px-3.5 py-1.5 rounded-lg text-[12px] font-medium">Call</a>
+          </div>
+
+          <div class="flex items-center justify-between gap-3">
+            <div class="flex items-center gap-3 min-w-0">
+              <i class="fa-regular fa-envelope text-[#e2b04a] text-sm w-4 shrink-0"></i>
+              <span class="text-[#d8dce4] truncate">varun.jain@jainlawco.in</span>
+            </div>
+            <a href="mailto:varun.jain@jainlawco.in" class="shrink-0 border border-[#30384a] hover:border-[#e2b04a]/50 text-[#e3e6ec] px-3.5 py-1.5 rounded-lg text-[12px] font-medium">Email</a>
+          </div>
+
+          <div class="flex items-center justify-between gap-3">
+            <div class="flex items-center gap-3 min-w-0">
+              <i class="fa-solid fa-globe text-[#e2b04a] text-sm w-4 shrink-0"></i>
+              <span class="text-[#d8dce4] truncate">www.jainlawco.in</span>
+            </div>
+            <a href="https://www.jainlawco.in" target="_blank" rel="noopener" class="shrink-0 border border-[#30384a] hover:border-[#e2b04a]/50 text-[#e3e6ec] px-3.5 py-1.5 rounded-lg text-[12px] font-medium">Website</a>
+          </div>
+        </div>
+
+        <h3 class="mt-5 text-[16px] font-bold text-white tracking-wide">Social Network</h3>
+        <div class="mt-3 bg-[#11141a] p-4 rounded-3xl border border-[#1c212b]">
+          <p class="text-[12px] text-[#9ca3b1] mb-3.5">Reach Adv. Varun Jain on his official channels</p>
+          <div class="grid grid-cols-2 gap-2.5">
+            <a href="https://wa.me/919812345678" target="_blank" rel="noopener" class="group flex items-center gap-3 p-3 rounded-2xl bg-[#171b23] border border-[#262d3b] hover:border-[#e2b04a]/50 active:scale-[0.98] transition">
+              <span class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.35)">
+                <i class="fa-brands fa-whatsapp text-[17px]" style="color:#25D366"></i>
+              </span>
+              <span class="min-w-0">
+                <span class="block text-[14px] font-semibold text-white leading-tight">WhatsApp</span>
+                <span class="block text-[12px] text-[#9ca3b1] mt-0.5">Quick Message</span>
+              </span>
+            </a>
+            <a href="https://www.linkedin.com/in/varunjain" target="_blank" rel="noopener" class="group flex items-center gap-3 p-3 rounded-2xl bg-[#171b23] border border-[#262d3b] hover:border-[#e2b04a]/50 active:scale-[0.98] transition">
+              <span class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background:rgba(55,143,233,.12);border:1px solid rgba(55,143,233,.35)">
+                <i class="fa-brands fa-linkedin-in text-[17px]" style="color:#378FE9"></i>
+              </span>
+              <span class="min-w-0">
+                <span class="block text-[14px] font-semibold text-white leading-tight">LinkedIn</span>
+                <span class="block text-[12px] text-[#9ca3b1] mt-0.5">Connect</span>
+              </span>
+            </a>
+            <a href="#" target="_blank" rel="noopener" aria-label="Instagram" class="group flex items-center gap-3 p-3 rounded-2xl bg-[#171b23] border border-[#262d3b] hover:border-[#e2b04a]/50 active:scale-[0.98] transition">
+              <span class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background:rgba(220,39,67,.12);border:1px solid rgba(220,39,67,.35)">
+                <i class="fa-brands fa-instagram text-[17px]" style="background:linear-gradient(45deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent"></i>
+              </span>
+              <span class="min-w-0">
+                <span class="block text-[14px] font-semibold text-white leading-tight">Instagram</span>
+                <span class="block text-[12px] text-[#9ca3b1] mt-0.5">Follow</span>
+              </span>
+            </a>
+            <a href="#" target="_blank" rel="noopener" aria-label="Facebook" class="group flex items-center gap-3 p-3 rounded-2xl bg-[#171b23] border border-[#262d3b] hover:border-[#e2b04a]/50 active:scale-[0.98] transition">
+              <span class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0" style="background:rgba(24,119,242,.12);border:1px solid rgba(24,119,242,.35)">
+                <i class="fa-brands fa-facebook-f text-[17px]" style="color:#1877F2"></i>
+              </span>
+              <span class="min-w-0">
+                <span class="block text-[14px] font-semibold text-white leading-tight">Facebook</span>
+                <span class="block text-[12px] text-[#9ca3b1] mt-0.5">Follow</span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Sticky Bottom Bar (Mobile me dikhega, Desktop par 'lg:hidden' se gayab rahega) -->
+    <div class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-[#07090d]/95 backdrop-blur-md px-4 py-2.5 border-t border-[#1c212b] flex items-center justify-between z-40 lg:hidden">
+      
+      <div class="flex items-center gap-2.5">
+        <div class="relative">
+          <img 
+            src="https://jainlawcompany.com/wp-content/uploads/2026/02/Adv.-Varun-Jain.png" 
+            alt="Adv. Varun Jain" 
+            class="w-10 h-10 rounded-full object-cover object-top border border-[#4a5265]"
+            onerror="this.src='https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=150&q=80'"
+          />
+          <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 rounded-full border border-black"></span>
+        </div>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-1">
+            <span class="text-[13px] font-bold text-white tracking-tight">Bar Verified</span>
+            <i class="fa-solid fa-circle-check text-emerald-400 text-[11px]"></i>
+          </div>
+          <span class="text-[11px] text-[#9ca3b1]">Avg. connect &lt; 60s</span>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <a href="https://wa.me/919812345678" target="_blank" class="bg-[#181c25] border border-[#30384a] hover:border-[#e2b04a]/50 text-white px-3.5 py-1.5 rounded-xl flex flex-col items-center justify-center min-w-[95px] active:scale-95 transition cursor-pointer">
+          <div class="flex items-center gap-1.5 text-xs font-semibold">
+            <i class="fa-regular fa-comment-dots text-[11px] text-[#e2b04a]"></i>
+            <span>Chat now</span>
+          </div>
+          <span class="text-[10px] text-emerald-400 font-medium leading-tight">Online</span>
+        </a>
+
+        <a href="tel:+919812345678" class="bg-[#181c25] border border-[#30384a] hover:border-[#e2b04a]/50 text-white px-3.5 py-1.5 rounded-xl flex flex-col items-center justify-center min-w-[95px] active:scale-95 transition cursor-pointer">
+          <div class="flex items-center gap-1.5 text-xs font-semibold">
+            <i class="fa-solid fa-phone text-[11px] text-emerald-400"></i>
+            <span>Call now</span>
+          </div>
+          <span class="text-[10px] text-[#7d8494] leading-tight">Instant call</span>
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="fixed left-1/2 -translate-x-1/2 bottom-24 z-50 hidden bg-[#171b23] border border-[#262d3b] text-[#e3e6ec] text-[13px] px-4 py-2 rounded-full shadow-2xl"></div>
+
+  <!-- Functional Scripts -->
+  <script>
+    function toggleBio() {
+      const fullBio = document.getElementById('full-bio');
+      const btnText = document.getElementById('btn-text');
+      const btnIcon = document.getElementById('btn-icon');
+
+      if (fullBio.classList.contains('hidden')) {
+        fullBio.classList.remove('hidden');
+        btnText.textContent = 'Read less';
+        btnIcon.classList.add('rotate-180');
+      } else {
+        fullBio.classList.add('hidden');
+        btnText.textContent = 'Read more';
+        btnIcon.classList.remove('rotate-180');
+      }
+    }
+
+    function filterReviews(type) {
+      const helpfulBtn = document.getElementById('tab-helpful');
+      const recentBtn = document.getElementById('tab-recent');
+
+      const activeClasses = ['bg-[#e2b04a]/20', 'text-[#e2b04a]', 'border-[#e2b04a]/40'];
+      const inactiveClasses = ['bg-[#11141a]', 'text-[#7d8494]', 'border-[#222836]'];
+
+      const setActive = (btn) => {
+        inactiveClasses.forEach(c => btn.classList.remove(c));
+        activeClasses.forEach(c => btn.classList.add(c));
+      };
+      const setInactive = (btn) => {
+        activeClasses.forEach(c => btn.classList.remove(c));
+        inactiveClasses.forEach(c => btn.classList.add(c));
+      };
+
+      if (type === 'helpful') {
+        setActive(helpfulBtn);
+        setInactive(recentBtn);
+      } else {
+        setActive(recentBtn);
+        setInactive(helpfulBtn);
+      }
+    }
+
+    let toastTimer;
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.remove('hidden');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => t.classList.add('hidden'), 2200);
+    }
+
+    function toggleMenu(e) {
+      e.stopPropagation();
+      const menu = document.getElementById('profile-menu');
+      const btn = document.getElementById('menu-btn');
+      const open = menu.classList.toggle('hidden') === false;
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    function closeMenu() {
+      document.getElementById('profile-menu').classList.add('hidden');
+      document.getElementById('menu-btn').setAttribute('aria-expanded', 'false');
+    }
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('#profile-menu')) closeMenu();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMenu();
+    });
+
+    async function shareProfile() {
+      closeMenu();
+      const data = {
+        title: 'Adv. Varun Jain - Chamberly',
+        text: 'View the profile of Adv. Varun Jain, Founder, Jain Law & Company on Chamberly.',
+        url: window.location.href
+      };
+      try {
+        if (navigator.share) {
+          await navigator.share(data);
+          return;
+        }
+      } catch (err) {
+        if (err && err.name === 'AbortError') return;
+      }
+      try {
+        await navigator.clipboard.writeText(data.url);
+        showToast('Profile link copied');
+      } catch (err) {
+        window.prompt('Copy this profile link:', data.url);
+      }
+    }
+
+    function downloadVCard() {
+      closeMenu();
+      const vcard = [
+        'BEGIN:VCARD',
+        'VERSION:3.0',
+        'FN:Adv. Varun Jain',
+        'N:Jain;Varun;;Adv.;',
+        'ORG:Jain Law & Company',
+        'TITLE:Founder',
+        'TEL;TYPE=WORK,VOICE:+919812345678',
+        'EMAIL;TYPE=WORK:varun.jain@jainlawco.in',
+        'URL:https://www.jainlawco.in',
+        'URL;TYPE=LinkedIn:https://www.linkedin.com/in/varunjain',
+        'ADR;TYPE=WORK:;;625A\\, Western Wing\\, Tis Hazari Courts;Delhi;;110054;India',
+        'NOTE:Advocate - RERA\\, Commercial Disputes\\, NCLT & IBC\\, Litigation. Profile on Chamberly.',
+        'END:VCARD'
+      ].join('\r\n');
+
+      const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'Adv-Varun-Jain.vcf';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      showToast('Virtual card downloaded');
+    }
+
+    function updateThemeIcon() {
+      const icon = document.getElementById('theme-icon');
+      const isLight = document.documentElement.classList.contains('light');
+      icon.className = isLight ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
+    }
+
+    function toggleTheme() {
+      const root = document.documentElement;
+      root.classList.toggle('light');
+      try {
+        localStorage.setItem('chamberly-theme', root.classList.contains('light') ? 'light' : 'dark');
+      } catch (e) {}
+      updateThemeIcon();
+    }
+
+    updateThemeIcon();
+  </script>
+</body>
+</html>
