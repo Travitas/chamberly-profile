@@ -113,7 +113,7 @@
       <div class="bg-[#11141a] rounded-3xl p-5 lg:p-7 border border-[#222836] relative shadow-2xl">
         
         <!-- Options Menu Dots -->
-        <button id="menu-btn" onclick="toggleMenu(event)" aria-haspopup="true" aria-expanded="false" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-[#868d9c] hover:text-white cursor-pointer" aria-label="Menu options">
+        <button id="menu-btn" onclick="toggleMenu(event)" aria-haspopup="true" aria-expanded="false" class="lg:hidden absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-[#868d9c] hover:text-white cursor-pointer" aria-label="Menu options">
           <i class="fa-solid fa-ellipsis-vertical text-base"></i>
         </button>
 
@@ -126,6 +126,19 @@
           <button onclick="downloadVCard()" role="menuitem" class="w-full flex items-center gap-3 px-4 py-2.5 text-[14px] text-[#e3e6ec] hover:bg-[#e2b04a]/10 cursor-pointer text-left">
             <i class="fa-regular fa-address-card text-[#e2b04a] text-sm w-4 shrink-0"></i>
             <span>Download virtual card</span>
+          </button>
+        </div>
+
+
+        <!-- Desktop: Share profile / Download card (secondary buttons) -->
+        <div class="hidden lg:flex absolute top-5 right-5 items-center gap-2.5">
+          <button onclick="shareProfile()" class="bg-[#181c25] hover:border-[#e2b04a]/50 border border-[#30384a] text-[#e3e6ec] px-4 py-2 rounded-xl flex items-center gap-2 text-[14px] font-semibold transition active:scale-95 cursor-pointer">
+            <i class="fa-solid fa-share-nodes text-[#e2b04a]"></i>
+            <span>Share profile</span>
+          </button>
+          <button onclick="downloadVCard()" class="bg-[#181c25] hover:border-[#e2b04a]/50 border border-[#30384a] text-[#e3e6ec] px-4 py-2 rounded-xl flex items-center gap-2 text-[14px] font-semibold transition active:scale-95 cursor-pointer">
+            <i class="fa-regular fa-address-card text-[#e2b04a]"></i>
+            <span>Download card</span>
           </button>
         </div>
 
@@ -145,8 +158,6 @@
                     onerror="this.src='https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=400&q=80'"
                   />
                 </div>
-                <!-- Online status indicator dot -->
-                <span class="absolute bottom-1 right-2 w-4 h-4 bg-emerald-500 rounded-full border-2 border-[#11141a]"></span>
               </div>
             </div>
 
@@ -177,30 +188,11 @@
             </div>
           </div>
 
-          <!-- Right: Desktop Instant Connect CTA (Astrotalk Web Style) -->
-          <div class="hidden lg:flex flex-col items-end gap-3 shrink-0">
-            <div class="text-right">
-              <span class="text-[13px] text-emerald-400 font-medium flex items-center gap-1.5 justify-end">
-                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Available for Instant Connect
-              </span>
-              <p class="text-[12px] text-[#7d8494] mt-0.5">Bar Verified · Delhi High Court</p>
-            </div>
-            <div class="flex items-center gap-3">
-              <a href="https://wa.me/919812345678" target="_blank" class="bg-[#181c25] hover:bg-[#222836] border border-[#30384a] text-white px-5 py-2.5 rounded-xl flex items-center gap-2 text-[14px] font-semibold transition active:scale-95">
-                <i class="fa-regular fa-comment-dots text-[#e2b04a]"></i>
-                <span>Chat Now</span>
-              </a>
-              <a href="tel:+919812345678" class="bg-gradient-to-r from-[#f3c862] via-[#e2b04a] to-[#c9972f] hover:from-[#e2b04a] hover:via-[#d4a03c] hover:to-[#b8871f] text-black px-5 py-2.5 rounded-xl flex items-center gap-2 text-[14px] font-semibold transition active:scale-95 shadow-md">
-                <i class="fa-solid fa-phone"></i>
-                <span>Call Now</span>
-              </a>
-            </div>
-          </div>
-
         </div>
 
         <!-- 3 Stats Counter Grid -->
-        <div class="grid grid-cols-3 divide-x divide-[#222836] border-t border-[#1c212b] mt-5 pt-4 text-center lg:max-w-2xl">
+        <div class="lg:flex lg:items-center lg:justify-between lg:gap-8 mt-5 pt-4 border-t border-[#1c212b]">
+        <div class="grid grid-cols-3 divide-x divide-[#222836] text-center lg:flex-1 lg:max-w-2xl">
           <div class="px-1 flex flex-col items-center">
             <i class="fa-solid fa-briefcase text-sm text-[#d4af37] mb-1.5 opacity-90"></i>
             <span class="text-[17px] font-semibold text-white tracking-tight">14+ yrs</span>
@@ -217,6 +209,24 @@
             <i class="fa-solid fa-scale-balanced text-sm text-[#d4af37] mb-1.5 opacity-90"></i>
             <span class="text-[17px] font-semibold text-white tracking-tight">30+</span>
             <span class="text-[12px] lg:text-[13px] font-medium text-[#7d8494] mt-0.5">PAN India Network</span>
+          </div>
+        </div>
+
+          <!-- Desktop: Chat Now / Call Now (profile card bottom-right) -->
+          <div class="hidden lg:flex flex-col items-end gap-3 shrink-0">
+            <div class="text-right">
+              <p class="text-[12px] text-[#7d8494] mt-0.5">Bar Verified · Delhi High Court</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <a href="https://wa.me/919812345678" target="_blank" class="bg-[#181c25] hover:bg-[#222836] border border-[#30384a] text-white px-5 py-2.5 rounded-xl flex items-center gap-2 text-[14px] font-semibold transition active:scale-95">
+                <i class="fa-regular fa-comment-dots text-[#e2b04a]"></i>
+                <span>Chat Now</span>
+              </a>
+              <a href="tel:+919812345678" class="bg-gradient-to-r from-[#f3c862] via-[#e2b04a] to-[#c9972f] hover:from-[#e2b04a] hover:via-[#d4a03c] hover:to-[#b8871f] text-black px-5 py-2.5 rounded-xl flex items-center gap-2 text-[14px] font-semibold transition active:scale-95 shadow-md">
+                <i class="fa-solid fa-phone"></i>
+                <span>Call Now</span>
+              </a>
+            </div>
           </div>
         </div>
 
@@ -662,7 +672,6 @@
             class="w-10 h-10 rounded-full object-cover object-top border border-[#4a5265]"
             onerror="this.src='https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=150&q=80'"
           />
-          <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 rounded-full border border-black"></span>
         </div>
         <div class="flex flex-col">
           <div class="flex items-center gap-1">
