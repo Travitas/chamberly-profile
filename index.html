@@ -10,11 +10,11 @@
   <!-- Google Fonts for Chamberly Logo Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     body { font-family: "PoppinsNum", "Raleway", "Plus Jakarta Sans", "Inter", system-ui, sans-serif; }
     .font-logo {
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: "Poppins", "Raleway", "Plus Jakarta Sans", Inter, system-ui, sans-serif;
     }
 
     /* ===== Light theme overrides (dark is default) ===== */
@@ -59,6 +59,646 @@
     html.light .text-\[\#e2b04a\] { color: #9a7209; }
     html.light .text-\[\#d4af37\] { color: #8a6d12; }
     html.light .hover\:text-white:hover { color: #121317; }
+
+    /* =========================================================
+       CHAMBERLY PROFILE — ASTROTALK-INSPIRED VISUAL SKIN
+       Styling-only layer: existing profile DOM and interactions
+       are intentionally preserved.
+    ========================================================== */
+    :root {
+      --page-bg: #0d0a06;
+      --page-bg-soft: #120e08;
+      --surface: #17130e;
+      --surface-raised: #1d1811;
+      --surface-soft: #241d13;
+      --surface-inset: #100d08;
+      --border: rgba(255, 244, 213, .09);
+      --border-strong: rgba(255, 224, 143, .18);
+      --text-primary: #fff9ec;
+      --text-secondary: rgba(255, 249, 236, .72);
+      --text-muted: rgba(255, 249, 236, .54);
+      --accent: #e7b94d;
+      --accent-strong: #f3d66c;
+      --accent-soft: rgba(231, 185, 77, .13);
+      --accent-gradient: linear-gradient(105deg, #f6e77a 0%, #eed45e 52%, #e8c34e 100%);
+      --page-gradient: radial-gradient(ellipse at 85% 0%, rgba(244, 222, 120, .10), transparent 38%), linear-gradient(120deg, #0d0a06 0%, #100c07 55%, #151006 100%);
+      --card-shadow: 0 8px 24px rgba(0,0,0,.12);
+      --radius-card: 15px;
+      --radius-control: 10px;
+      --font-body: "Poppins", "Raleway", "Plus Jakarta Sans", Inter, system-ui, sans-serif;
+    }
+
+    html.light {
+      --page-bg: #fffef8;
+      --page-bg-soft: #fffdf1;
+      --surface: rgba(255,255,255,.88);
+      --surface-raised: #ffffff;
+      --surface-soft: #fffdf5;
+      --surface-inset: #fffdf6;
+      --border: rgba(107, 91, 39, .11);
+      --border-strong: rgba(181, 151, 54, .22);
+      --text-primary: #29271f;
+      --text-secondary: #686456;
+      --text-muted: #928c7b;
+      --accent: #b98219;
+      --accent-strong: #9d6d12;
+      --accent-soft: rgba(235, 201, 84, .15);
+      --accent-gradient: linear-gradient(105deg, #f7ec82 0%, #f3df6c 55%, #edcf55 100%);
+      --page-gradient: radial-gradient(ellipse at 85% 0%, rgba(250, 229, 122, .25), transparent 38%), linear-gradient(115deg, #fffefb 0%, #fffef4 52%, #fffbe5 100%);
+      --card-shadow: 0 5px 18px rgba(111, 91, 28, .045);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--page-gradient) !important;
+      color: var(--text-primary) !important;
+      font-family: var(--font-body) !important;
+      font-size: 13px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    body, body * { font-family: var(--font-body); }
+    .font-logo { font-family: var(--font-body) !important; font-weight: 700 !important; letter-spacing: -.045em !important; }
+
+    /* Full-width page and navigation */
+    .profile-page {
+      width: 100% !important;
+      max-width: none !important;
+      min-height: 100vh;
+      overflow: clip;
+      background: transparent !important;
+      border-left: 0 !important;
+      border-right: 0 !important;
+      padding-bottom: 5rem;
+    }
+    header.sticky {
+      background: color-mix(in srgb, var(--surface-raised) 91%, transparent) !important;
+      border-color: var(--border) !important;
+      backdrop-filter: blur(16px);
+    }
+    header.sticky > div,
+    header.sticky {
+      box-shadow: none;
+    }
+    .profile-page > header { padding-left: clamp(16px, 3.2vw, 52px) !important; padding-right: clamp(16px, 3.2vw, 52px) !important; }
+    .profile-page > header .font-logo { font-size: 25px !important; }
+    .profile-page > header nav { font-size: 12.5px !important; gap: clamp(14px, 2vw, 28px) !important; }
+    .profile-page > header button {
+      background: var(--surface-soft) !important;
+      border-color: var(--border-strong) !important;
+      color: var(--text-secondary) !important;
+    }
+    .profile-page > header a:hover,
+    .profile-page > header nav a:hover { color: var(--accent) !important; }
+
+    /* Breadcrumb and main profile hero */
+    .profile-page > div:nth-of-type(1) {
+      padding-left: clamp(16px, 3.2vw, 52px) !important;
+      padding-right: clamp(16px, 3.2vw, 52px) !important;
+      color: var(--text-muted) !important;
+      font-size: 11px !important;
+      letter-spacing: .045em !important;
+    }
+    .profile-page > div:nth-of-type(1) .text-\[\#e2b04a\] { color: var(--accent) !important; }
+    .profile-page > div:nth-of-type(2) {
+      padding-left: clamp(16px, 2.2vw, 36px) !important;
+      padding-right: clamp(16px, 2.2vw, 36px) !important;
+    }
+    .profile-page > div:nth-of-type(2) > div {
+      background: var(--surface) !important;
+      border: 1px solid var(--border) !important;
+      border-radius: var(--radius-card) !important;
+      box-shadow: var(--card-shadow) !important;
+      padding: clamp(18px, 2.1vw, 30px) !important;
+    }
+    .profile-page h1 {
+      color: var(--text-primary) !important;
+      font-size: clamp(22px, 2.1vw, 29px) !important;
+      font-weight: 600 !important;
+      letter-spacing: -.035em !important;
+      line-height: 1.25 !important;
+    }
+    .profile-page h2 {
+      color: var(--text-primary) !important;
+      font-size: clamp(17px, 1.45vw, 20px) !important;
+      font-weight: 600 !important;
+      letter-spacing: -.025em !important;
+      line-height: 1.35 !important;
+    }
+    .profile-page h3 { color: var(--text-primary) !important; }
+    .profile-page p { line-height: 1.65; }
+    .profile-page .text-white,
+    .profile-page .text-\[\#f5f6f8\] { color: var(--text-primary) !important; }
+    .profile-page .text-\[\#e3e6ec\],
+    .profile-page .text-\[\#d8dce4\],
+    .profile-page .text-neutral-300 { color: var(--text-secondary) !important; }
+    .profile-page .text-\[\#9ca3b1\],
+    .profile-page .text-\[\#a3a9b6\],
+    .profile-page .text-\[\#a9afbb\],
+    .profile-page .text-\[\#868d9c\],
+    .profile-page .text-\[\#7d8494\],
+    .profile-page .text-\[\#6b7282\] { color: var(--text-muted) !important; }
+    .profile-page .text-\[\#e2b04a\],
+    .profile-page .text-\[\#d4af37\] { color: var(--accent) !important; }
+
+    /* Circular headshot — retain the existing image and crop to portrait */
+    .profile-page img[alt="Adv. Varun Jain"] {
+      border-radius: 50% !important;
+      object-fit: cover !important;
+      object-position: center 22% !important;
+    }
+    .profile-page .rounded-full.p-\[3px\] {
+      width: clamp(82px, 8vw, 104px) !important;
+      height: clamp(82px, 8vw, 104px) !important;
+      padding: 3px !important;
+      border: 2px solid var(--accent) !important;
+      background: var(--surface-raised) !important;
+      box-shadow: 0 0 0 4px var(--accent-soft);
+    }
+
+    /* Buttons, chips, badges and controls */
+    .profile-page button,
+    .profile-page a { -webkit-tap-highlight-color: transparent; }
+    .profile-page button:focus-visible,
+    .profile-page a:focus-visible {
+      outline: 2px solid var(--accent-strong) !important;
+      outline-offset: 3px !important;
+    }
+    .profile-page .bg-\[\#181c25\],
+    .profile-page .bg-\[\#171b23\],
+    .profile-page .bg-\[\#11141a\],
+    .profile-page .bg-\[\#1e232d\] {
+      background-color: var(--surface-raised) !important;
+    }
+    .profile-page .border-\[\#171b23\],
+    .profile-page .border-\[\#1c212b\],
+    .profile-page .border-\[\#222836\],
+    .profile-page .border-\[\#262d3b\],
+    .profile-page .border-\[\#2b3342\],
+    .profile-page .border-\[\#30384a\],
+    .profile-page .border-\[\#343d50\] { border-color: var(--border) !important; }
+    .profile-page .rounded-3xl,
+    .profile-page .rounded-2xl { border-radius: var(--radius-card) !important; }
+    .profile-page .rounded-xl,
+    .profile-page .rounded-lg { border-radius: var(--radius-control) !important; }
+    .profile-page .bg-gradient-to-r.from-\[\#f3c862\] {
+      background: var(--accent-gradient) !important;
+      color: #2c240d !important;
+      box-shadow: 0 5px 16px rgba(225, 187, 70, .16);
+    }
+    .profile-page a[class*="bg-gradient-to-r"] { color: #2c240d !important; }
+    .profile-page .bg-\[\#fbeec3\] {
+      background: var(--accent-soft) !important;
+      color: var(--accent-strong) !important;
+      border-color: var(--border-strong) !important;
+    }
+    .profile-page .bg-\[\#171b23\].border,
+    .profile-page span.bg-\[\#171b23\] {
+      background: var(--surface-soft) !important;
+      border-color: var(--border) !important;
+      color: var(--text-secondary) !important;
+    }
+    .profile-page a[class*="border-[#30384a]"],
+    .profile-page button[class*="border-[#30384a]"] {
+      background: var(--surface-raised) !important;
+      border-color: var(--border-strong) !important;
+      color: var(--text-primary) !important;
+    }
+    .profile-page a:hover,
+    .profile-page button:hover { transition: all .18s ease; }
+    .profile-page a[class*="border-[#30384a]"]:hover,
+    .profile-page button[class*="border-[#30384a]"]:hover {
+      border-color: var(--accent) !important;
+      background-color: var(--accent-soft) !important;
+    }
+
+    /* Content columns and consistent spacing */
+    .profile-page > div.lg\:px-8.lg\:mt-8 {
+      padding-left: clamp(16px, 3.2vw, 52px) !important;
+      padding-right: clamp(16px, 3.2vw, 52px) !important;
+      margin-top: clamp(20px, 2.2vw, 32px) !important;
+      gap: clamp(24px, 3vw, 46px) !important;
+    }
+    .profile-page section { scroll-margin-top: 90px; }
+    .profile-page section.border-t { border-color: var(--border) !important; }
+    .profile-page section > h2 { margin-bottom: 0; }
+    .profile-page .order-1 p,
+    .profile-page .order-1 #full-bio { color: var(--text-secondary) !important; font-size: 13px !important; }
+    .profile-page .order-1 { margin-top: 0 !important; }
+    .profile-page .order-3,
+    .profile-page .order-2,
+    .profile-page .order-4,
+    .profile-page .order-5,
+    .profile-page .order-6,
+    .profile-page .order-7 { padding-top: 19px !important; margin-top: 22px !important; }
+    .profile-page .order-3 span,
+    .profile-page .order-5 span { font-size: 12px; }
+    .profile-page aside > div {
+      background: var(--surface) !important;
+      border: 1px solid var(--border) !important;
+      border-radius: var(--radius-card) !important;
+      box-shadow: var(--card-shadow) !important;
+    }
+    .profile-page aside a { border-radius: var(--radius-control) !important; }
+    .profile-page aside .border-b,
+    .profile-page aside .border-t { border-color: var(--border) !important; }
+
+    /* Reviews: light, separate review tiles like the supplied reference */
+    .profile-page .order-6 > div.py-3 {
+      margin: 8px 0 !important;
+      padding: 13px 14px !important;
+      border: 1px solid var(--border) !important;
+      border-radius: 12px !important;
+      background: var(--surface) !important;
+      box-shadow: var(--card-shadow);
+    }
+    .profile-page .order-6 > div.py-3 p { color: var(--text-secondary) !important; font-size: 12px !important; }
+    .profile-page .order-6 > div.py-3 .rounded-full {
+      border-color: var(--border) !important;
+      background: var(--accent-soft) !important;
+      color: var(--accent) !important;
+    }
+    .profile-page #tab-helpful,
+    .profile-page #tab-recent {
+      border-radius: 999px !important;
+      font-size: 11.5px !important;
+      padding: 6px 12px !important;
+    }
+    .profile-page #tab-helpful { background: var(--accent-soft) !important; color: var(--accent) !important; border-color: var(--border-strong) !important; }
+    .profile-page #tab-recent { background: var(--surface-raised) !important; color: var(--text-muted) !important; border-color: var(--border) !important; }
+
+    /* Social and contact cards */
+    .profile-page .order-7 > div,
+    .profile-page .lg\:hidden section > div {
+      background: var(--surface) !important;
+      border-color: var(--border) !important;
+    }
+    .profile-page .order-7 a,
+    .profile-page .lg\:hidden section a.group {
+      background: var(--surface-raised) !important;
+      border-color: var(--border) !important;
+    }
+    .profile-page .order-7 a:hover,
+    .profile-page .lg\:hidden section a.group:hover { border-color: var(--accent) !important; }
+
+    /* Mobile sticky action bar spans the viewport, not a narrow card */
+    .profile-page ~ #toast { font-family: var(--font-body) !important; }
+    body > .profile-page > div.fixed.bottom-0 {
+      width: 100% !important;
+      max-width: none !important;
+      left: 0 !important;
+      right: 0 !important;
+      padding-left: max(16px, env(safe-area-inset-left)) !important;
+      padding-right: max(16px, env(safe-area-inset-right)) !important;
+      background: color-mix(in srgb, var(--surface-raised) 94%, transparent) !important;
+      border-color: var(--border) !important;
+      backdrop-filter: blur(16px);
+    }
+    #toast {
+      background: var(--surface-raised) !important;
+      color: var(--text-primary) !important;
+      border-color: var(--border-strong) !important;
+    }
+
+    /* Light theme: cream/yellow page gradient and bright surfaces */
+    html.light body { background: var(--page-gradient) !important; color: var(--text-primary) !important; }
+    html.light .profile-page > div:nth-of-type(2) > div,
+    html.light .profile-page aside > div,
+    html.light .profile-page .order-6 > div.py-3,
+    html.light .profile-page .order-7 > div { background: rgba(255,255,255,.88) !important; }
+    html.light .profile-page .bg-\[\#050608\],
+    html.light .profile-page .bg-\[\#0a0c10\],
+    html.light .profile-page .bg-\[\#07090d\]\/95 { background-color: transparent !important; }
+    html.light .profile-page .bg-\[\#181c25\],
+    html.light .profile-page .bg-\[\#171b23\],
+    html.light .profile-page .bg-\[\#11141a\],
+    html.light .profile-page .bg-\[\#1e232d\] { background-color: #fffefa !important; }
+    html.light .profile-page .text-white,
+    html.light .profile-page .text-\[\#f5f6f8\] { color: #29271f !important; }
+    html.light .profile-page .text-\[\#e3e6ec\],
+    html.light .profile-page .text-\[\#d8dce4\],
+    html.light .profile-page .text-neutral-300 { color: #625e52 !important; }
+    html.light .profile-page .text-\[\#9ca3b1\],
+    html.light .profile-page .text-\[\#a3a9b6\],
+    html.light .profile-page .text-\[\#a9afbb\],
+    html.light .profile-page .text-\[\#868d9c\],
+    html.light .profile-page .text-\[\#7d8494\],
+    html.light .profile-page .text-\[\#6b7282\] { color: #898371 !important; }
+    html.light .profile-page .border-\[\#171b23\],
+    html.light .profile-page .border-\[\#1c212b\],
+    html.light .profile-page .border-\[\#222836\],
+    html.light .profile-page .border-\[\#262d3b\],
+    html.light .profile-page .border-\[\#2b3342\],
+    html.light .profile-page .border-\[\#30384a\],
+    html.light .profile-page .border-\[\#343d50\] { border-color: rgba(130,111,51,.14) !important; }
+    html.light .profile-page .text-\[\#e2b04a\],
+    html.light .profile-page .text-\[\#d4af37\] { color: #a87816 !important; }
+    html.light .profile-page .rounded-full.p-\[3px\] { background: #fff !important; }
+    html.light .profile-page .order-6 > div.py-3 { background: rgba(255,255,255,.9) !important; }
+    html.light .profile-page .bg-\[\#fbeec3\] { background: rgba(236,205,91,.20) !important; color: #8a6515 !important; }
+
+    /* Responsive refinements */
+    @media (min-width: 1024px) {
+      .profile-page > div:nth-of-type(2) > div { padding: 22px 26px !important; }
+      .profile-page > div.lg\:px-8.lg\:mt-8 { grid-template-columns: minmax(0, 1.9fr) minmax(280px, .9fr) !important; }
+      .profile-page .order-6 > div.py-3 { max-width: 100%; }
+      .profile-page aside { top: 88px !important; }
+    }
+    @media (max-width: 1023px) {
+      .profile-page > div:nth-of-type(2) > div { padding: 18px !important; }
+      .profile-page > div.lg\:px-8.lg\:mt-8 { display: flex !important; flex-direction: column !important; gap: 0 !important; }
+      .profile-page > div.lg\:px-8.lg\:mt-8 > div,
+      .profile-page > div.lg\:px-8.lg\:mt-8 > aside { width: 100% !important; }
+      .profile-page section { padding-left: clamp(16px, 3vw, 28px) !important; padding-right: clamp(16px, 3vw, 28px) !important; }
+      .profile-page .order-7 { display: none !important; }
+      .profile-page > div:nth-of-type(2) { margin-top: 0; }
+    }
+    @media (max-width: 640px) {
+      .profile-page > header .font-logo { font-size: 22px !important; }
+      .profile-page h1 { font-size: 22px !important; }
+      .profile-page h2 { font-size: 18px !important; }
+      .profile-page .order-6 > div.py-3 { padding: 12px !important; }
+      .profile-page > div:nth-of-type(2) > div { border-radius: 13px !important; }
+      .profile-page > div.fixed.bottom-0 { gap: 8px !important; }
+      .profile-page > div.fixed.bottom-0 a { min-width: 0 !important; padding-left: 10px !important; padding-right: 10px !important; }
+    }
+
+    /* Reduced motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+
+
+    /* ===== V2 correction: exact 12-column profile layout + closer Astrotalk palette ===== */
+    .profile-page > div.lg\:px-8.lg\:mt-8 {
+      display: grid !important;
+      grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+      align-items: start !important;
+      column-gap: clamp(24px, 3vw, 44px) !important;
+      row-gap: 0 !important;
+    }
+    .profile-page > div.lg\:px-8.lg\:mt-8 > .lg\:col-span-8 {
+      grid-column: span 8 / span 8 !important;
+      min-width: 0 !important;
+    }
+    .profile-page > div.lg\:px-8.lg\:mt-8 > aside.lg\:col-span-4 {
+      grid-column: span 4 / span 4 !important;
+      min-width: 0 !important;
+      display: block !important;
+      position: sticky !important;
+      top: 88px !important;
+      align-self: start !important;
+    }
+
+    /* Astrotalk reference palette: warmer near-black dark mode and ivory daylight mode */
+    :root {
+      --page-bg: #0b0804;
+      --page-bg-soft: #100c06;
+      --surface: #17130e;
+      --surface-raised: #1b1711;
+      --surface-soft: #211b12;
+      --surface-inset: #100c07;
+      --border: rgba(255, 247, 222, .075);
+      --border-strong: rgba(255, 222, 132, .16);
+      --text-primary: #fff9ec;
+      --text-secondary: rgba(255, 249, 236, .68);
+      --text-muted: rgba(255, 249, 236, .48);
+      --accent: #e7b94d;
+      --accent-strong: #f2d96a;
+      --accent-soft: rgba(242, 217, 106, .12);
+      --accent-gradient: linear-gradient(105deg, #f7ed7c 0%, #f0dc66 55%, #e9cf51 100%);
+      --page-gradient: radial-gradient(ellipse at 88% 0%, rgba(243, 224, 112, .075), transparent 36%), #0b0804;
+      --card-shadow: 0 2px 10px rgba(0,0,0,.12);
+    }
+    html.light {
+      --page-bg: #fffef8;
+      --page-bg-soft: #fffdf2;
+      --surface: #fbffff;
+      --surface-raised: #fbffff;
+      --surface-soft: #fffef8;
+      --surface-inset: #fffef8;
+      --border: rgba(90, 104, 98, .10);
+      --border-strong: rgba(190, 157, 53, .20);
+      --text-primary: #28271f;
+      --text-secondary: #68675e;
+      --text-muted: #999587;
+      --accent: #bd861c;
+      --accent-strong: #9c6c12;
+      --accent-soft: rgba(242, 221, 112, .17);
+      --accent-gradient: linear-gradient(105deg, #f7ed78 0%, #f4e36d 55%, #efda5c 100%);
+      --page-gradient: linear-gradient(112deg, #fffefb 0%, #fffef5 45%, #fffbe3 100%);
+      --card-shadow: 0 2px 12px rgba(128, 111, 47, .035);
+    }
+    html.light body { background: var(--page-gradient) !important; }
+    html.light .profile-page > header {
+      background: rgba(255,255,255,.82) !important;
+      border-color: rgba(90,104,98,.08) !important;
+    }
+    html.light .profile-page > div:nth-of-type(2) > div,
+    html.light .profile-page aside > div,
+    html.light .profile-page .order-6 > div.py-3,
+    html.light .profile-page .order-7 > div,
+    html.light .profile-page .lg\:hidden section > div {
+      background: #fbffff !important;
+      border-color: rgba(90,104,98,.10) !important;
+      box-shadow: 0 2px 12px rgba(128,111,47,.025) !important;
+    }
+    html.light .profile-page .bg-\[\#181c25\],
+    html.light .profile-page .bg-\[\#171b23\],
+    html.light .profile-page .bg-\[\#11141a\],
+    html.light .profile-page .bg-\[\#1e232d\] {
+      background-color: #fbffff !important;
+    }
+    html.light .profile-page .text-\[\#e2b04a\],
+    html.light .profile-page .text-\[\#d4af37\] { color: #b77e18 !important; }
+    html.light .profile-page .bg-\[\#fbeec3\] {
+      background: rgba(247, 225, 116, .30) !important;
+      color: #8b6817 !important;
+    }
+
+    @media (max-width: 1023px) {
+      .profile-page > div.lg\:px-8.lg\:mt-8 {
+        display: flex !important;
+        flex-direction: column !important;
+      }
+      .profile-page > div.lg\:px-8.lg\:mt-8 > .lg\:col-span-8,
+      .profile-page > div.lg\:px-8.lg\:mt-8 > aside.lg\:col-span-4 {
+        grid-column: auto !important;
+        width: 100% !important;
+      }
+      .profile-page > div.lg\:px-8.lg\:mt-8 > aside.lg\:col-span-4 {
+        position: static !important;
+      }
+    }
+
+  
+    /* ===== V3 focused refinements: spacing, surfaces, header and portrait ===== */
+
+    /* Match the reference's breathing room above the breadcrumb/profile area */
+    .profile-page > div:nth-of-type(1) {
+      margin-top: 22px !important;
+      padding-top: 7px !important;
+      padding-bottom: 12px !important;
+    }
+    .profile-page > div:nth-of-type(2) {
+      margin-top: 2px !important;
+    }
+
+    /* Header surface: clean, even background in both themes */
+    .profile-page > header {
+      background: rgba(18, 15, 10, .97) !important;
+      border-bottom: 1px solid rgba(255, 247, 222, .10) !important;
+      box-shadow: 0 2px 10px rgba(0,0,0,.08) !important;
+    }
+    html.light .profile-page > header {
+      background: rgba(255,255,255,.97) !important;
+      border-bottom-color: rgba(90,104,98,.12) !important;
+      box-shadow: 0 2px 10px rgba(30,35,40,.035) !important;
+    }
+
+    /* Profile hero, content panels, sidebar and every existing boxed surface */
+    .profile-page > div:nth-of-type(2) > div,
+    .profile-page aside > div,
+    .profile-page .order-6 > div.py-3,
+    .profile-page .order-7 > div,
+    .profile-page .lg\:hidden section > div {
+      background: var(--surface-raised) !important;
+      border-color: var(--border) !important;
+      box-shadow: var(--card-shadow) !important;
+    }
+    .profile-page [class*="bg-[#181c25]"],
+    .profile-page [class*="bg-[#171b23]"],
+    .profile-page [class*="bg-[#11141a]"],
+    .profile-page [class*="bg-[#1e232d]"],
+    .profile-page [class*="bg-[#0d1015]"] {
+      background-color: var(--surface-raised) !important;
+    }
+    .profile-page .order-1,
+    .profile-page .order-2,
+    .profile-page .order-3,
+    .profile-page .order-4,
+    .profile-page .order-5,
+    .profile-page .order-6,
+    .profile-page .order-7 {
+      border-color: var(--border) !important;
+    }
+
+    /* Light mode uses the reference's white panels over a very soft neutral page */
+    html.light {
+      --page-gradient: #f5f6f8;
+      --surface: #ffffff;
+      --surface-raised: #ffffff;
+      --surface-soft: #f7f8fa;
+      --surface-inset: #f7f8fa;
+      --border: #e9ebef;
+      --border-strong: #e5d7a5;
+      --card-shadow: 0 2px 12px rgba(25,35,45,.035);
+    }
+    html.light body,
+    html.light .profile-page {
+      background: #f5f6f8 !important;
+    }
+    html.light .profile-page > div:nth-of-type(2) > div,
+    html.light .profile-page aside > div,
+    html.light .profile-page .order-6 > div.py-3,
+    html.light .profile-page .order-7 > div,
+    html.light .profile-page .lg\:hidden section > div {
+      background: #ffffff !important;
+      border-color: #e9ebef !important;
+      box-shadow: 0 2px 12px rgba(25,35,45,.035) !important;
+    }
+    html.light .profile-page [class*="bg-[#181c25]"],
+    html.light .profile-page [class*="bg-[#171b23]"],
+    html.light .profile-page [class*="bg-[#11141a]"],
+    html.light .profile-page [class*="bg-[#1e232d]"],
+    html.light .profile-page [class*="bg-[#0d1015]"] {
+      background-color: #f7f8fa !important;
+    }
+
+    /* Headshot-only crop: zoom the existing image within its circular frame */
+    .profile-page img[alt="Adv. Varun Jain"] {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: center 12% !important;
+      transform: scale(1.28) !important;
+      transform-origin: center 18% !important;
+    }
+    .profile-page .rounded-full.p-\[3px\] {
+      overflow: hidden !important;
+      isolation: isolate;
+    }
+
+    /* Badge beside the advocate's name: distinct, softly filled reference-style chip */
+    .profile-page h1 + i + span,
+    .profile-page h1 ~ span {
+      background: rgba(232, 194, 83, .16) !important;
+      color: #d7ad3e !important;
+      border: 1px solid rgba(232, 194, 83, .32) !important;
+      border-radius: 999px !important;
+      padding: 4px 10px !important;
+      font-size: 10px !important;
+      font-weight: 600 !important;
+      letter-spacing: .055em !important;
+      line-height: 1.35 !important;
+      white-space: nowrap !important;
+    }
+    html.light .profile-page h1 + i + span,
+    html.light .profile-page h1 ~ span {
+      background: #fff8df !important;
+      color: #8d6a16 !important;
+      border-color: #f0dfaa !important;
+    }
+
+    /* Consistent vertical rhythm between the main content sections */
+    .profile-page > div.lg\:px-8.lg\:mt-8 {
+      margin-top: 26px !important;
+    }
+    .profile-page .order-2,
+    .profile-page .order-3,
+    .profile-page .order-4,
+    .profile-page .order-5,
+    .profile-page .order-6,
+    .profile-page .order-7 {
+      margin-top: 24px !important;
+      padding-top: 20px !important;
+    }
+    .profile-page aside > div {
+      padding: 18px !important;
+    }
+
+    @media (max-width: 1023px) {
+      .profile-page > div:nth-of-type(1) {
+        margin-top: 16px !important;
+      }
+      .profile-page > div.lg\:px-8.lg\:mt-8 {
+        margin-top: 20px !important;
+      }
+      .profile-page aside > div {
+        padding: 16px !important;
+      }
+    }
+    @media (max-width: 640px) {
+      .profile-page > div:nth-of-type(1) {
+        margin-top: 12px !important;
+        padding-bottom: 10px !important;
+      }
+      .profile-page > div:nth-of-type(2) > div {
+        padding: 17px !important;
+      }
+      .profile-page .order-2,
+      .profile-page .order-3,
+      .profile-page .order-4,
+      .profile-page .order-5,
+      .profile-page .order-6,
+      .profile-page .order-7 {
+        margin-top: 20px !important;
+        padding-top: 17px !important;
+      }
+    }
+
   </style>
   <script>
     try {
@@ -71,7 +711,7 @@
 <body class="bg-[#050608] text-white antialiased min-h-screen">
 
   <!-- Main Container: Mobile par max-w-md, Desktop par max-w-6xl -->
-  <div class="w-full max-w-md lg:max-w-6xl mx-auto bg-[#0a0c10] min-h-screen pb-28 lg:pb-16 relative border-x border-[#171b23]">
+  <div class="profile-page w-full max-w-none mx-auto bg-[#0a0c10] min-h-screen pb-28 lg:pb-16 relative border-x border-[#171b23]">
     
     <!-- Top Header Navigation -->
     <header class="px-4 lg:px-8 py-3 lg:py-3.5 flex items-center justify-between border-b border-[#171b23] sticky top-0 bg-[#0a0c10]/95 backdrop-blur-md z-30">
